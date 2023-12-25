@@ -1,0 +1,16 @@
+[tool.ruff]
+line-length = 79
+exclude = ['migrations']
+
+[tool.isort]
+profile = "black"
+line_length = 79
+extend_skip = ['migrations']
+
+[tool.blue]
+extend-exclude = '(migrations/)'
+
+[tool.taskipy.tasks]
+lint = 'ruff . && blue --check . --diff'
+format = 'blue .  && isort .'
+pylint = 'pylint $(git ls-files "*.py") --load-plugins=pylint_django timesheet -v --rcfile=.pylintrc --exit-zero'
