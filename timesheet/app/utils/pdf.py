@@ -1,6 +1,5 @@
 """Module that contains the function that generates the PDF file."""
 
-import calendar
 from datetime import date, datetime
 from io import BytesIO
 
@@ -25,10 +24,6 @@ def generate_pdf(queryset: QuerySet):
     """
     buffer = BytesIO()
     kalendar = Brazil()
-
-    _, last_day = calendar.monthrange(
-        datetime.now().year, datetime.now().month
-    )
 
     month_name = {
         1: 'janeiro',
@@ -86,11 +81,11 @@ def generate_pdf(queryset: QuerySet):
         day = str(record.register_date.day)
 
         if d.weekday() == 6:
-            day += '(domingo)'
+            day += ' (domingo)'
         elif kalendar.is_holiday(d):
-            day += '(feriado)'
+            day += ' (feriado)'
         elif d.weekday() == 5:
-            day += '(sábado)'
+            day += ' (sábado)'
 
         records.append(
             [
@@ -101,14 +96,6 @@ def generate_pdf(queryset: QuerySet):
                 format_time(record.clock_out_afternoon),
             ]
         )
-
-        if d.weekday() == 5 and record.register_date.day < last_day:
-            records.append(
-                [
-                    str(record.register_date.day + 1),
-                    [None] * 4,
-                ]
-            )
 
     elements = []
 

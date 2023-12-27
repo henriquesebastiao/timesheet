@@ -20,4 +20,4 @@ class PointRecord(models.Model):
     is_holiday = models.BooleanField(default=False)
 
     def __str__(self):
-        return f'{self.register_date.day}/{self.register_date.month}/{self.register_date.year}'
+        return f'{self.register_date.day}-{self.register_date.month}-{self.register_date.year}'

@@ -19,11 +19,14 @@ class PointRecordAdmin(admin.ModelAdmin):
         'clock_out_morning',
         'clock_in_afternoon',
         'clock_out_afternoon',
+        'is_saturday',
+        'is_sunday',
+        'is_holiday',
     ]
 
     list_display_links = ['register_date']
     search_fields = ['register_date']
-    list_filter = ['register_date']
+    list_filter = ['register_date', 'is_saturday', 'is_sunday', 'is_holiday']
     list_per_page = 7
     ordering = ['register_date']
 
