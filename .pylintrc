@@ -53,7 +53,7 @@ ignore=CVS, settings.py, manage.py, wsgi.py, asgi.py
 # ignore-list. The regex matches against paths and can be in Posix or Windows
 # format. Because '\\' represents the directory delimiter on Windows systems,
 # it can't be used as an escape character.
-ignore-paths=project/apps/app/migrations, project/apps/app/tests, project/apps/website/tests, project/apps/website/migrations
+ignore-paths=timesheet/app/migrations, timesheet/app/tests
 
 # Files or directories matching the regular expression patterns are skipped.
 # The regex matches against base names, not paths. The default value ignores

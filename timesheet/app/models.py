@@ -9,11 +9,10 @@ class PointRecord(models.Model):
 
     user = models.ForeignKey(get_user_model(), on_delete=models.CASCADE)
     register_date = models.DateField(auto_now_add=True)
-    clock_in_morning = models.TimeField()
+    clock_in_morning = models.TimeField(null=True, blank=True)
     clock_out_morning = models.TimeField(null=True, blank=True)
     clock_in_afternoon = models.TimeField(null=True, blank=True)
     clock_out_afternoon = models.TimeField(null=True, blank=True)
-    is_saturday = models.BooleanField(default=False)
 
     def __str__(self):
         return f'{self.register_date}'

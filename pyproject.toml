@@ -1,3 +1,35 @@
+[project]
+name = "timesheet"
+authors = [
+    {name = "Henrique Sebastião", email = "contato@henriquesebastiao.com"},
+]
+readme = "README.md"
+requires-python = ">=3.11"
+classifiers = ["License :: MIT License"]
+version = "0.0.1"
+
+dependencies = [
+    'django',
+    'gunicorn',
+    'psycopg2-binary',
+    'python-dotenv',
+    'reportlab',
+    'workalendar',
+    'whitenoise',
+]
+
+[project.optional-dependencies]
+dev = [
+    'black',
+    'blue',
+    'flake8',
+    'isort',
+    'pylint',
+    'pylint-django',
+    'pylint-plugin-utils',
+    'taskipy',
+]
+
 [tool.ruff]
 line-length = 79
 exclude = ['migrations']
