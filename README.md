@@ -9,7 +9,7 @@ git clone https://github.com/henriquesebastiao/timesheet.git
 cd timesheet
 python3 -m venv venv
 source venv/bin/activate
-pip install -r requirements.txt
+pip install .
 ```
 
 Defina a variável de ambiente `DEBUG` como `1` para rodar o servidor em modo de desenvolvimento com um banco de dados SQLite.
