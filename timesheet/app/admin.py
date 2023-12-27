@@ -25,7 +25,7 @@ class PointRecordAdmin(admin.ModelAdmin):
     search_fields = ['register_date']
     list_filter = ['register_date']
     list_per_page = 7
-    ordering = ['id']
+    ordering = ['register_date']
 
     @admin.action(description='Generate PDF')
     def get_pdf(self, request, queryset: QuerySet):
