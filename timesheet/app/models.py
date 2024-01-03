@@ -18,6 +18,7 @@ class PointRecord(models.Model):
     is_saturday = models.BooleanField(default=False)
     is_sunday = models.BooleanField(default=False)
     is_holiday = models.BooleanField(default=False)
+    is_vacation = models.BooleanField(default=False)
 
     def __str__(self):
         return f'{self.register_date.day}-{self.register_date.month}-{self.register_date.year}'

@@ -22,13 +22,16 @@ class PointRecordAdmin(admin.ModelAdmin):
         'is_saturday',
         'is_sunday',
         'is_holiday',
+        'is_vacation',
     ]
 
     list_display_links = ['register_date']
     search_fields = ['register_date']
     list_filter = ['register_date', 'is_saturday', 'is_sunday', 'is_holiday']
     list_per_page = 7
-    ordering = ['register_date']
+
+    # Ordena os registros por data em ordem decrescente para a visualização no painel de administração.
+    ordering = ['-register_date']
 
     @admin.action(description='Generate PDF')
     def get_pdf(self, request, queryset: QuerySet):
