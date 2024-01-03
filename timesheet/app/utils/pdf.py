@@ -71,7 +71,9 @@ def generate_pdf(queryset: QuerySet):
 
         return formatted_time
 
-    for record in queryset:
+    for record in queryset.order_by(
+        'register_date'
+    ):  # Ordena os registros por data em ordem crescente na tabela.
         d = date(
             record.register_date.year,
             record.register_date.month,
