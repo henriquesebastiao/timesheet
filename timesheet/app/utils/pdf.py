@@ -82,7 +82,9 @@ def generate_pdf(queryset: QuerySet):
 
         day = str(record.register_date.day)
 
-        if d.weekday() == 6:
+        if record.is_vacation:
+            day += ' (férias)'
+        elif d.weekday() == 6:
             day += ' (domingo)'
         elif kalendar.is_holiday(d):
             day += ' (feriado)'
