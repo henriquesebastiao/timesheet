@@ -46,3 +46,4 @@ extend-exclude = '(migrations/)'
 lint = 'ruff . && blue --check . --diff'
 format = 'blue .  && isort .'
 pylint = 'pylint $(git ls-files "*.py") --load-plugins=pylint_django timesheet -v --rcfile=.pylintrc --exit-zero'
+run = "python manage.py runserver"

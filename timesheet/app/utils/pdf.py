@@ -50,11 +50,12 @@ def generate_pdf(queryset: QuerySet):
         ],
     ]
 
-    def format_time(time) -> str:
+    def format_time(time, record_day):
         """
         Function that formats a time object to a string.
         Args:
             time: Time object to be formatted.
+            record_day: PointRecord object to be used to check if the day is a working day.
 
         Returns:
             A string with the time formatted.
@@ -64,7 +65,11 @@ def generate_pdf(queryset: QuerySet):
             kalendar.is_working_day(d) or d.weekday() == 5 or d.weekday() == 6
         ):
             formatted_time = time.strftime('%H:%M')
-        elif time is None and kalendar.is_working_day(d):
+        elif (
+            time is None
+            and kalendar.is_working_day(d)
+            and not record_day.is_vacation
+        ):
             formatted_time = '-'
         else:
             formatted_time = '*'
@@ -94,10 +99,10 @@ def generate_pdf(queryset: QuerySet):
         records.append(
             [
                 day,
-                format_time(record.clock_in_morning),
-                format_time(record.clock_out_morning),
-                format_time(record.clock_in_afternoon),
-                format_time(record.clock_out_afternoon),
+                format_time(record.clock_in_morning, record),
+                format_time(record.clock_out_morning, record),
+                format_time(record.clock_in_afternoon, record),
+                format_time(record.clock_out_afternoon, record),
             ]
         )
 
