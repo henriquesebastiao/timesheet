@@ -2,36 +2,9 @@
 
 Um simples sistema de controle de ponto eletrônico para resolver o meu problema de geral um pdf automaticamente ao fim do mês 😄.
 
-## Como usar localmente
+Timesheet é desenvolvido com Django, utilizando o banco de dados PostgreSQL e a lib `reportlab` para a geração do PDF no fim do mês. Toda a interação com a aplicação é feita através do painel administrativo do Django.
 
-```shell
-git clone https://github.com/henriquesebastiao/timesheet.git
-cd timesheet
-python3 -m venv venv
-source venv/bin/activate
-pip install .
-```
+Você pode testar a aplicação em [timesheet-hick.fly.dev](https://timesheet-hick.fly.dev/) com o usuário de demostração:
 
-Defina a variável de ambiente `DEBUG` como `1` para rodar o servidor em modo de desenvolvimento com um banco de dados SQLite.
-
-```shell
-export DEBUG=1
-```
-
-```shell
-python manage.py migrate
-```
-
-Crie um super usuário para acessar o painel de administração.
-
-```shell
-python manage.py createsuperuser
-```
-
-Rode o servidor de desenvolvimento.
-
-```shell
-python manage.py runserver
-```
-
-Acessar o painel de administração em `http://localhost:8000/` e entrar com o usuário criado anteriormente.
+- **Usuário**: `user-demo`
+- **Senha**: `Demo@123`
