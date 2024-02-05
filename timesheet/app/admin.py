@@ -1,6 +1,7 @@
 """Timesheet app admin configuration."""
 
 from django.contrib import admin
+from django.contrib.auth import get_user_model
 from django.db.models import QuerySet
 
 from .models import PointRecord
@@ -37,3 +38,18 @@ class PointRecordAdmin(admin.ModelAdmin):
     def get_pdf(self, request, queryset: QuerySet):
         """Generate a PDF with the selected registers."""
         return generate_pdf(queryset)
+
+    def get_form(self, request, obj=None, change=False, **kwargs):
+        """Return a custom form for the admin."""
+        form = super().get_form(request, obj, change, **kwargs)
+        form.base_fields['user'].queryset = get_user_model().objects.filter(
+            id=request.user.id
+        )
+        return form
+
+    def get_queryset(self, request):
+        """Return a QuerySet of only the logged-in user's point records."""
+        qs = super().get_queryset(request)
+        if request.user.is_superuser:
+            return qs
+        return qs.filter(user=request.user)
