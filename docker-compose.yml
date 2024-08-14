@@ -19,7 +19,7 @@ services:
     ports:
       - "8091:8000"
     volumes:
-      - ./timesheet:/timesheetd
+      - ./timesheet:/timesheet
     env_file:
       - .env
     depends_on:
