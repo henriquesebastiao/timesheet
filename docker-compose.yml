@@ -1,25 +1,26 @@
-version: '3.9'
-
 services:
+  postgres-timesheet:
+    container_name: postgres-timesheet
+    image: postgres:16.1-alpine
+    ports:
+      - "5434:5434"
+    volumes:
+      - ./data:/var/lib/postgresql/data/
+    env_file:
+      - .env
+    environment:
+      - PGPORT=5434
+
   django-timesheet:
     container_name: django-timesheet
     build:
       context: .
       dockerfile: Dockerfile
     ports:
-      - "8000:8000"
+      - "8091:8000"
     volumes:
-      - ./timesheet:/timesheet
+      - ./timesheet:/timesheetd
     env_file:
       - .env
     depends_on:
       - postgres-timesheet
-  postgres-timesheet:
-    container_name: postgres-timesheet
-    image: postgres:16.1-alpine
-    ports:
-      - "5432:5432"
-    volumes:
-      - postgres/data:/var/lib/postgresql/data/
-    env_file:
-      - .env

@@ -1,7 +1,6 @@
 import os
 from pathlib import Path
 
-import dj_database_url
 from django.core.management.utils import get_random_secret_key
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -16,9 +15,7 @@ SECRET_KEY = os.getenv('SECRET_KEY', default=get_random_secret_key())
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = bool(int(os.environ.get('DEBUG', 0)))
 
-APP_NAME = os.environ.get('FLY_APP_NAME')
-ALLOWED_HOSTS = ['localhost', '127.0.0.1', f'{APP_NAME}.fly.dev']
-CSRF_TRUSTED_ORIGINS = [f'https://{APP_NAME}.fly.dev']
+ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'server.henriquesebastiao.com']
 
 # Application definition
 
@@ -76,10 +73,14 @@ if DEBUG:
     }
 else:
     DATABASES = {
-        'default': dj_database_url.config(
-            conn_max_age=600,
-            conn_health_checks=True,
-        ),
+        'default': {
+            'ENGINE': 'django.db.backends.postgresql',
+            'NAME': os.getenv('POSTGRES_DB'),
+            'USER': os.getenv('POSTGRES_USER'),
+            'PASSWORD': os.getenv('POSTGRES_PASSWORD'),
+            'HOST': os.getenv('POSTGRES_HOST'),
+            'PORT': os.getenv('POSTGRES_PORT'),
+        }
     }
 
 # Password validation
