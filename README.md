@@ -6,7 +6,7 @@ Timesheet é desenvolvido com Django, utilizando o banco de dados PostgreSQL e a
 
 ### Deploy 🚀
 
-Você pode testar a aplicação em [aqui](https://timesheet.henriquesebastiao.com/) com o usuário de demostração:
+Você pode testar a aplicação em [aqui](https://timesheet.henriquesebastiao.com/) com o usuário de demonstração:
 
 - **Usuário**: `user`
 - **Senha**: `pass@321`
