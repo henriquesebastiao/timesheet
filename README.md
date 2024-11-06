@@ -14,6 +14,6 @@ Você pode testar a aplicação em [aqui](https://timesheet.henriquesebastiao.co
 ### Tecnologias utilizadas
 
 - **Python** e **Django**, para o desenvolvimento da aplicação.
-- **Postgres** como bando de dados.
+- **Postgres** como banco de dados.
 - **Docker**, para desenvolvimento em container.
 - **Ruff** como linter e formatador de código.
