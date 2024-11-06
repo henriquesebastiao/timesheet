@@ -15,7 +15,7 @@ SECRET_KEY = os.getenv('SECRET_KEY', default=get_random_secret_key())
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = bool(int(os.environ.get('DEBUG', 0)))
 
-ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'server.henriquesebastiao.com']
+ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'timesheet.henriquesebastiao.com']
 
 # Application definition
 
@@ -124,3 +124,5 @@ STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+CSRF_TRUSTED_ORIGINS = ['https://timesheet.henriquesebastiao.com']
